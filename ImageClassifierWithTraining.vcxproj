@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{a8f943b3-c3e5-4663-a9d6-1772b4b3169d}</ProjectGuid>
+    <RootNamespace>ImageClassifierWithTraining</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\libs\boost_1_88_0;C:\Users\minis\Documents\cpp\projects\Eigen;C:\Users\minis\source\repos\Eigen\.vs\Eigen\eigen-3.3.9;C:\Users\minis\source\repos\Eigen;C:\libs\opencv\build\include;$(CUDA_PATH)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\libs\opencv\build\x64\vc16\lib;C:\libs\boost_1_88_0\lib64-msvc-14.3;$(CUDA_PATH)\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4110d.lib;cudart.lib;cublas.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>if defined CUDA_PATH (
+set "CUDA_BIN=%CUDA_PATH%\bin"
+if exist "%CUDA_PATH%\bin\x64" set "CUDA_BIN=%CUDA_PATH%\bin\x64"
+if exist "%CUDA_BIN%\cudart64_13.dll" (copy /Y "%CUDA_BIN%\cudart64_13.dll" "$(OutDir)" &amp; copy /Y "%CUDA_BIN%\cublas64_13.dll" "$(OutDir)")
+if exist "%CUDA_BIN%\cudart64_12.dll" (copy /Y "%CUDA_BIN%\cudart64_12.dll" "$(OutDir)" &amp; copy /Y "%CUDA_BIN%\cublas64_12.dll" "$(OutDir)")
+if exist "%CUDA_BIN%\cudart64_11.dll" (copy /Y "%CUDA_BIN%\cudart64_11.dll" "$(OutDir)" &amp; copy /Y "%CUDA_BIN%\cublas64_11.dll" "$(OutDir)")
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\libs\boost_1_88_0;C:\Users\minis\Documents\cpp\projects\Eigen;C:\Users\minis\source\repos\Eigen\.vs\Eigen\eigen-3.3.9;C:\Users\minis\source\repos\Eigen;C:\libs\opencv\build\include;$(CUDA_PATH)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\libs\opencv\build\x64\vc16\lib;C:\libs\boost_1_88_0\lib64-msvc-14.3;$(CUDA_PATH)\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4110.lib;cudart.lib;cublas.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>if defined CUDA_PATH (
+set "CUDA_BIN=%CUDA_PATH%\bin"
+if exist "%CUDA_PATH%\bin\x64" set "CUDA_BIN=%CUDA_PATH%\bin\x64"
+if exist "%CUDA_BIN%\cudart64_13.dll" (copy /Y "%CUDA_BIN%\cudart64_13.dll" "$(OutDir)" &amp; copy /Y "%CUDA_BIN%\cublas64_13.dll" "$(OutDir)")
+if exist "%CUDA_BIN%\cudart64_12.dll" (copy /Y "%CUDA_BIN%\cudart64_12.dll" "$(OutDir)" &amp; copy /Y "%CUDA_BIN%\cublas64_12.dll" "$(OutDir)")
+if exist "%CUDA_BIN%\cudart64_11.dll" (copy /Y "%CUDA_BIN%\cudart64_11.dll" "$(OutDir)" &amp; copy /Y "%CUDA_BIN%\cublas64_11.dll" "$(OutDir)")
+)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ImageClassifierWithTraining.cpp" />
+    <ClCompile Include="UniversalImageClassifier.cpp" />
+    <ClCompile Include="NeuralNetwork.cpp" />
+    <ClCompile Include="ImageDownloader.cpp" />
+    <ClCompile Include="TextRenderer.cpp" />
+    <ClCompile Include="LanguageModel.cpp" />
+    <ClCompile Include="CudaAccelerator.cpp" />
+    <ClCompile Include="MetricsPlotter.cpp" />
+    <ClCompile Include="ShapeAnalyzer.cpp" />
+    <ClCompile Include="SubNetworkManager.cpp" />
+    <ClCompile Include="FuzzyLogicFusion.cpp" />
+    <ClCompile Include="Profiler.cpp" />
+    <ClCompile Include="BlasWrapper.cpp" />
+    <ClCompile Include="TopologicalSignature.cpp" />
+    <ClCompile Include="HyperRelationalFuzzyGraph.cpp" />
+    <ClCompile Include="TopologicalKernel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UniversalImageClassifier.h" />
+    <ClInclude Include="NeuralNetwork.h" />
+    <ClInclude Include="ImageDownloader.h" />
+    <ClInclude Include="TextRenderer.h" />
+    <ClInclude Include="LanguageModel.h" />
+    <ClInclude Include="CudaAccelerator.h" />
+    <ClInclude Include="MetricsPlotter.h" />
+    <ClInclude Include="ShapeAnalyzer.h" />
+    <ClInclude Include="SubNetworkManager.h" />
+    <ClInclude Include="FuzzyLogicFusion.h" />
+    <ClInclude Include="ConsoleOutput.h" />
+    <ClInclude Include="Profiler.h" />
+    <ClInclude Include="BlasWrapper.h" />
+    <ClInclude Include="TopologicalSignature.h" />
+    <ClInclude Include="HyperRelationalFuzzyGraph.h" />
+    <ClInclude Include="TopologicalKernel.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

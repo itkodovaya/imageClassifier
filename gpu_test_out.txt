@@ -1,0 +1,16 @@
+==========================================
+   Image Classifier System                
+==========================================
+[CUDA] CUDA недоступна, используется CPU режим
+Ускорение: CPU
+[UniversalImageClassifier] Architecture automatically determined:
+  Input size: 3072
+  Number of classes: 10
+  Hidden layers: 640 -> 64
+  Output size: 10
+[BlasWrapper] No BLAS library detected, using Eigen fallback
+[UniversalImageClassifier] Анализ структуры включен
+  - Анализ формы образа
+  - Выделение структур (выпячиваний)
+  - Подсети для отдельных структур
+  - Объединение через логические операции и нечеткую логику
